@@ -28,7 +28,9 @@ const search = ref("");
 
         <div class="buttons">
           <button class="button">Изменить</button>
-          <button class="button">Удалить</button>
+          <button class="button" @click="store.deletePost(post.id)">
+            Удалить
+          </button>
         </div>
       </div>
     </div>
