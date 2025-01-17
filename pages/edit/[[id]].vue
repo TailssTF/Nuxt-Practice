@@ -10,6 +10,8 @@ if (isEditing.value) {
   const post = store.getPostById(Number(route.params.id));
   if (post) {
     title.value = post.title;
+  } else {
+    navigateTo("/edit");
   }
 }
 
