@@ -12,14 +12,20 @@ const store = useMainStore();
     <p>Список постов:</p>
     <div v-for="post in store.posts" class="post">
       <p>{{ post.title }}</p>
-      <p>{{ post.publishDate }}</p>
+      <p class="date">{{ post.publishDate }}</p>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .post {
   border: 1px solid black;
+  border-radius: 4px;
   width: 300px;
+  padding: 0 8px;
+}
+.date {
+  font-size: small;
+  color: grey;
 }
 </style>
