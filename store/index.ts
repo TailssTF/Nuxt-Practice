@@ -19,6 +19,11 @@ export const useMainStore = defineStore("main", {
       return (string = "") =>
         state.posts.filter((post) => post.title.includes(string));
     },
+    getPostById: (state) => {
+      return (id: Number) => {
+        return state.posts.find((post) => post.id == id);
+      };
+    },
   },
   actions: {
     deletePost(id: Number) {
@@ -30,6 +35,14 @@ export const useMainStore = defineStore("main", {
         title,
         publishDate: new Date().toLocaleDateString("ru-RU"),
       });
+      navigateTo("/");
+    },
+    updatePost(id: Number, title: string) {
+      const post = this.posts.find((post) => post.id == id);
+      if (!post) {
+        return false;
+      }
+      post.title = title;
       navigateTo("/");
     },
   },

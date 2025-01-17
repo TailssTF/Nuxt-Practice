@@ -43,7 +43,9 @@ const onDeletePost = () => {
         <span class="date">{{ post.publishDate }}</span>
 
         <div class="buttons">
-          <button class="button" @click="navigateTo('/edit')">Изменить</button>
+          <button class="button" @click="navigateTo('/edit/' + post.id)">
+            Изменить
+          </button>
           <button class="button" @click="onOpenModal(post.id)">Удалить</button>
         </div>
       </div>
