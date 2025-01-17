@@ -11,11 +11,17 @@ const search = ref("");
 
 <template>
   <div>
-    <p>Список постов:</p>
     <div>
-      <input type="search" class="search" v-model="search" />
-      <button class="button" @click="navigateTo('/edit')">Добавить</button>
+      <input
+        type="search"
+        class="search"
+        placeholder="Фильтр"
+        v-model="search"
+      />
+      <button class="button" @click="navigateTo('/edit')">Добавить пост</button>
     </div>
+
+    <p>Список постов:</p>
 
     <div v-if="!filterPosts(search).length">
       <p>Нет постов для отображения</p>
@@ -39,7 +45,7 @@ const search = ref("");
 
 <style scoped>
 .search {
-  margin: 0 4px 8px 0;
+  margin-right: 24px;
 }
 
 .button:not(:last-of-type) {
