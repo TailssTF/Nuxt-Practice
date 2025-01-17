@@ -24,5 +24,13 @@ export const useMainStore = defineStore("main", {
     deletePost(id: Number) {
       this.posts = this.posts.filter((post) => post.id !== id);
     },
+    addPost(title: string) {
+      this.posts.push({
+        id: this.nextId++,
+        title,
+        publishDate: new Date().toLocaleDateString("ru-RU"),
+      });
+      navigateTo("/");
+    },
   },
 });
