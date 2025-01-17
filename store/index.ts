@@ -11,4 +11,10 @@ export const useMainStore = defineStore("main", {
       },
     ],
   }),
+  getters: {
+    filterPosts: (state) => {
+      return (string = "") =>
+        state.posts.filter((post) => post.title.includes(string));
+    },
+  },
 });

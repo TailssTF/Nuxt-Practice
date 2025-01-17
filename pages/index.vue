@@ -5,25 +5,31 @@ useHead({
   title: "Nuxt Practice",
 });
 const store = useMainStore();
+const { filterPosts } = storeToRefs(store);
+const search = ref("");
 </script>
 
 <template>
   <div>
     <p>Список постов:</p>
     <div>
-      <input type="search" class="search" />
-      <button class="button">Найти</button>
+      <input type="search" class="search" v-model="search" />
       <button class="button">Добавить</button>
     </div>
 
-    <div v-for="post in store.posts" class="post">
-      {{ post.title }}
-      <br />
-      <span class="date">{{ post.publishDate }}</span>
+    <div v-if="!filterPosts(search).length">
+      <p>Нет постов для отображения</p>
+    </div>
+    <div v-else>
+      <div v-for="post in filterPosts(search)" class="post">
+        {{ post.title }}
+        <br />
+        <span class="date">{{ post.publishDate }}</span>
 
-      <div class="buttons">
-        <button class="button">Изменить</button>
-        <button class="button">Удалить</button>
+        <div class="buttons">
+          <button class="button">Изменить</button>
+          <button class="button">Удалить</button>
+        </div>
       </div>
     </div>
   </div>
