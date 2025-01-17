@@ -11,8 +11,14 @@ const store = useMainStore();
   <div>
     <p>Список постов:</p>
     <div v-for="post in store.posts" class="post">
-      <p>{{ post.title }}</p>
-      <p class="date">{{ post.publishDate }}</p>
+      {{ post.title }}
+      <br />
+      <span class="date">{{ post.publishDate }}</span>
+
+      <div class="buttons">
+        <button class="button">Изменить</button>
+        <button class="button">Удалить</button>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +28,17 @@ const store = useMainStore();
   border: 1px solid black;
   border-radius: 4px;
   width: 300px;
-  padding: 0 8px;
+  padding: 8px;
+
+  .buttons {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+
+    .button {
+      margin-left: 8px;
+    }
+  }
 }
 .date {
   font-size: small;
