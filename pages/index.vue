@@ -7,6 +7,16 @@ useHead({
 const store = useMainStore();
 const { filterPosts } = storeToRefs(store);
 const search = ref("");
+const showModal = ref(false);
+const postId = ref<Number>(-1);
+const onOpenModal = (id: Number) => {
+  postId.value = id;
+  showModal.value = true;
+};
+const onDeletePost = () => {
+  store.deletePost(postId.value);
+  showModal.value = false;
+};
 </script>
 
 <template>
@@ -34,12 +44,21 @@ const search = ref("");
 
         <div class="buttons">
           <button class="button" @click="navigateTo('/edit')">Изменить</button>
-          <button class="button" @click="store.deletePost(post.id)">
-            Удалить
-          </button>
+          <button class="button" @click="onOpenModal(post.id)">Удалить</button>
         </div>
       </div>
     </div>
+
+    <Teleport to="#teleports">
+      <Modal :show="showModal" @cancel="showModal = false">
+        <template #header>
+          <h3>Удалить пост?</h3>
+        </template>
+        <template #footer>
+          <button @click="onDeletePost">Да</button>
+        </template>
+      </Modal>
+    </Teleport>
   </div>
 </template>
 
