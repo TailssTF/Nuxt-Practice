@@ -14,7 +14,7 @@ const search = ref("");
     <p>Список постов:</p>
     <div>
       <input type="search" class="search" v-model="search" />
-      <button class="button">Добавить</button>
+      <button class="button" @click="navigateTo('/edit')">Добавить</button>
     </div>
 
     <div v-if="!filterPosts(search).length">
@@ -27,7 +27,7 @@ const search = ref("");
         <span class="date">{{ post.publishDate }}</span>
 
         <div class="buttons">
-          <button class="button">Изменить</button>
+          <button class="button" @click="navigateTo('/edit')">Изменить</button>
           <button class="button" @click="store.deletePost(post.id)">
             Удалить
           </button>
