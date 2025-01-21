@@ -9,6 +9,7 @@ const { filterPosts } = storeToRefs(store);
 const search = ref("");
 const showModal = ref(false);
 const postId = ref<Number>(-1);
+
 const onOpenModal = (id: Number) => {
   postId.value = id;
   showModal.value = true;

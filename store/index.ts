@@ -14,6 +14,7 @@ export const useMainStore = defineStore("main", {
       },
     ],
   }),
+
   getters: {
     filterPosts: (state) => {
       return (string = "") =>
@@ -25,6 +26,7 @@ export const useMainStore = defineStore("main", {
       };
     },
   },
+
   actions: {
     deletePost(id: Number) {
       this.posts = this.posts.filter((post) => post.id !== id);
